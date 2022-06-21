@@ -5,7 +5,7 @@
 
 `TextureName` : Classe permettant de créer l'operateur textureName.
 
-`Ngone` : Classe permettant de créer l'opérateur ngon.
+`Ngon` : Classe permettant de créer l'opérateur ngon.
 
 ## Fonction 
 
@@ -13,7 +13,7 @@
 
 ### Fonction sur les Textures
 
-`textureName(self)` : Vérfier le nom des textures du projets, fait appel au self appelé dans execute(self) de la classe TextureName.
+`textureName(self)` : Vérfier le nom des textures du projets, fait appel au `self` appelé dans `execute(self)` de la classe TextureName.
 
 ### Fonction sur les N-gones
 
