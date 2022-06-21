@@ -14,7 +14,7 @@ bl_info = {
     "doc_url": "",
     "category": "Add Mesh",
 }
-   
+
 def docName():  
     path = bpy.data.filepath
     name = os.path.splitext(os.path.basename(path))[0]
@@ -26,9 +26,30 @@ def docName():
         bpy.ops.export_scene.obj(filepath = dest)
     else:
         print("le nom de du document n'est pas correct")                 
-          
-                   
-def textureName(self):
+    
+def createTextureDict():
+    textureDict = { 'Diffuse' : '', 'Normal' : '', 'Rougthness' : ''}  
+    Diffuse = re.compile(r"^D_.*")
+    Normal = re.compile(r"^N_.*")
+    Rougthness = re.compile(r"^R_.*")
+    for image in bpy.data.images:
+        if Diffuse.match(image.name) :
+            textureDict['Diffuse'] = image
+        if Normal.match(image.name) :
+            textureDict['Normal'] = image
+        if Rougthness.match(image.name) :
+            textureDict['Rougthness'] = image
+    return textureDict
+
+
+def missingTexture() :
+    textureDict = createTextureDict()
+    for key in textureDict :
+        if textureDict[key] == '' :
+            return True
+    return False
+
+def findWrongTexture(self):
     badTextureList = []
     goodTexture = re.compile(r"^[DNR]_.*")
     modele = re.compile(r"^modele_.*")
@@ -38,13 +59,24 @@ def textureName(self):
                 badTextureList.append(image)
                 msg = "Atention ! La texture : " + image.name + " est mal nommée"
                 self.report({'ERROR'}, message = msg)
-    if len(badTextureList) == 0 :
+
+
+def allTexture(self):
+    textureDict = createTextureDict()
+    if missingTexture():
+        for key in textureDict :
+            if textureDict[key] == '' :
+                self.report({'ERROR'}, message = "La texture " + key + " n'a pas été trouvé")
+        findWrongTexture(self)
+    else :
         self.report({'INFO'}, message = "Toutes les textures sont bien nommées")
+        
     
 
 def activateEditMode():
-    if bpy.context.mode != 'EDIT_MESH' :
+    if bpy.context.mode == 'EDIT_MESH' :
         bpy.ops.object.editmode_toggle()
+    bpy.ops.object.editmode_toggle()
     bpy.ops.mesh.select_all(action = 'DESELECT')
     
     
@@ -91,7 +123,7 @@ class TextureName(bpy.types.Operator):
         return True
     
     def execute(self, context):
-        textureName(self)
+        allTexture(self)
         return {"FINISHED"}
     
 #Operateur_Ngone-------------------------------------------------------------------------------------------------
@@ -120,7 +152,7 @@ class MyPanel(bpy.types.Panel):
     bl_category = "SNCF"          
                     
     def draw(self, context):
-        self.layout.label(text = "Nommenclature :")
+        self.layout.label(text = "Nomenclature :")
         self.layout.label(text = "- Modèle : 'modele_...'")
         self.layout.label(text = "- Texture : ")
         self.layout.label(text = "    Diffuse : 'D_...'" )
