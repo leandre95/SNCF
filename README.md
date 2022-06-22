@@ -13,7 +13,13 @@
 
 ### Fonction sur les Textures
 
-`textureName(self)` : Vérfier le nom des textures du projets, fait appel au `self` appelé dans `execute(self)` de la classe `TextureName`.
+`createTextureDict()` : Créer un dictionnaire des textures.Renvoie le dictionnaire.
+
+`missingTexture()` : Définir s'il manque des texture. En parcourant le dictionnaire créer précédement. Renvoie un booléen.
+
+`findWrongTexture(self)` : Trouver les texture mal nommé du projet, s'il y en a et les afficher.
+
+`allTexture(self)` : Vérfier le nom des textures du projets, fait appel au `self` appelé dans `execute(self)` de la classe `TextureName`.
 
 ### Fonction sur les N-gones
 
