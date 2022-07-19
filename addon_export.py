@@ -119,7 +119,7 @@ class OpenFolder(bpy.types.Operator):
     
     
 class Proporties(bpy.types.PropertyGroup):
-    name : bpy.props.StringProperty(name='', default = '.fbx')
+    name : bpy.props.StringProperty(name='', default = '')
     bpy.types.Scene.export_folder = bpy.props.StringProperty(name="Export folder", subtype="DIR_PATH", description="Directory to export the fbx files into")
     export_selection : bpy.props.EnumProperty(
         name = '',
