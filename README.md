@@ -1,4 +1,17 @@
+# Installer un add-on
+
+Télécharger les add-ons
+Dans Blender :
+Edit -> Preferences -> Add-ons -> Install 
+et choisir les add-ons que vous venez de télécharger puis les activer
+
 # Documentation technique
+
+## add-on Texture
+
+## add-on Ngon
+
+## add-on Export
 
 
 ## Classe = Operateur
