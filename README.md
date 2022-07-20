@@ -6,7 +6,7 @@ Dans Blender :
 
 Edit -> Preferences -> Add-ons -> Install 
 
-et choisir les add-ons que vous venez de télécharger puis les activer
+et choisir les add-ons que vous venez de télécharger puis les activer.
 
 # Documentation technique
 
@@ -14,39 +14,49 @@ et choisir les add-ons que vous venez de télécharger puis les activer
 
 ## add-on Ngon
 
-## add-on Export
+`createNgonDict` : Créer un dictionnaire de Ngone sous la forme { id du polygone qui a plus de 4 sommets : objet de type mesh qui contient ce polygone }.
 
-
-## Classe = Operateur
-
-`TextureName` : Classe permettant de créer l'operateur `textureName`.
-
-`Ngon` : Classe permettant de créer l'opérateur ngon.
-
-## Fonction 
-
-`docName()` : Verifier la synthaxe du nom du document lors de l'export ( finalement pas utilisé ).
-
-### Fonction sur les Textures
-
-`createTextureDict()` : Créer un dictionnaire des textures.Renvoie le dictionnaire.
-
-`missingTexture()` : Définir s'il manque des texture. En parcourant le dictionnaire créer précédement. Renvoie un booléen.
-
-`findWrongTexture(self)` : Trouver les texture mal nommé du projet, s'il y en a et les afficher.
-
-`allTexture(self)` : Vérfier le nom des textures du projets, fait appel au `self` appelé dans `execute(self)` de la classe `TextureName`.
-
-### Fonction sur les N-gones
-
-`activeEditMode` : Activer le mode edition et désélectionner tous les objets.
+`hideOff` : Forcer la vu non caché sur tous les objets du projet.
 
 `activeWireframe` : Transformer le mesh séléctionné. Seulement les bords sont conservés.
 
-`createNgonList` : Créer la liste des N-gones du mesh séléctionné.
+`environnement` : Placer la scène dans un environnement par défaut ( Tous les objets non caché, en mode EDIT sur le premier Mesh ayant un Ngon, dont rien n'est sélectionné et avec la vu Wireframe activé ).
 
 `ngon` : Vérifier s'il existe des N-gones dans la scènes et les affiches sur la View3D.
 
+`selectNgon` : Sélectionner le premier Ngon du dictionnaire et centrer la caméra dessus.
+
+`Ngon` : Opérateur permettant de créer l'opérateur "Vérifier les N-gones".
+
+`FindNgone` : Opérateur pour créer l'opérateur "Trouver le N-gone".
+
+`DialogBoxNgon` : Opérateur qui gère la pop-up.
+
+## add-on Export
+
+`Export` : Opérateur qui gère l'export du projet.
+
+`filePath` : Choisir le dossier ou sera enregistrer l'export.
+
+`exportLimit` : Choisir la limitation d'export (selection ou collection).
+
+`exportTemplate` : Choisir l'export pré-enregistré.
+
+`export` : Gérer l'export en fonction de ce que l'utilisateur a choisit.
+
+`OpenFolder` : Opérateur qui gère l'ouverture du dosssier d'export 
+
+`Proporties` : Classes des propriétés
+
+name : nom du fichier d'export 
+
+bpy.types.Scene.export_folder : dossier d'export
+
+export_selection : enumeration des choix possible pour les limites d'export
+
+export_template : enumeration des choix possible pour les templates d'exports
+
+  
 ## UI
 
 `MyPanel` : Classe héritante du type panel de blender -> permet de créer un nouveau panel sur l'interface de blender.
