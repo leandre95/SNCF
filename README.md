@@ -12,6 +12,13 @@ et choisir les add-ons que vous venez de télécharger puis les activer.
 
 ## add-on Texture
 
+`createBadTextureList` : créer la liste des textures mal nommées du projet
+
+`TextureName` : Opérateur qui vérifie le nom des textures du projet
+
+`DialogBoxTexture` : Opérateur gérant la pop-up
+
+
 ## add-on Ngon
 
 `createNgonDict` : Créer un dictionnaire de Ngone sous la forme { id du polygone qui a plus de 4 sommets : objet de type mesh qui contient ce polygone }.
