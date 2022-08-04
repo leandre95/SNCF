@@ -10,13 +10,19 @@ et choisir les add-ons que vous venez de télécharger puis les activer.
 
 # Documentation technique
 
-## add-on Texture
+## add-on Nomenclature
 
 `createBadTextureList` : créer la liste des textures mal nommées du projet
 
 `TextureName` : Opérateur qui vérifie le nom des textures du projet
 
 `DialogBoxTexture` : Opérateur gérant la pop-up
+
+`createBadMaterialList` : créer la liste des materiaux mal nommés du projet
+
+`MaterialName` : Opérateur qui vérifie le nom des materiaux du projet
+
+`DialogBoxMaterial` : Opérateur gérant la pop-up
 
 
 ## add-on Ngon
