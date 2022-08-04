@@ -65,7 +65,7 @@ class DialogBoxTexture(bpy.types.Operator):
         else :
             row = self.layout.row()
             row.box().label(icon='CANCEL')
-            row.box().label(text = "ATTENTION, une ou plusieurs sont mal nommées")
+            row.box().label(text = "ATTENTION, une ou plusieurs textures sont mal nommées")
             self.layout.label(text = "Nomenclature :")
             self.layout.label(text = "- Modèle : 'modele_...'")
             self.layout.label(text = "- Texture : ")
@@ -100,13 +100,13 @@ class MaterialName(bpy.types.Operator):
         return True
     
     def execute(self, context):
-        bpy.ops.wm.dialog_box_texture('INVOKE_DEFAULT')
+        bpy.ops.wm.dialog_box_material('INVOKE_DEFAULT')
         return {"FINISHED"}
     
 
 class DialogBoxMaterial(bpy.types.Operator):
-    bl_idname = "wm.dialog_box_texture"
-    bl_label = "Textures"
+    bl_idname = "wm.dialog_box_material"
+    bl_label = "Materiaux"
 
     @classmethod
     def poll(cls, context):
